@@ -28,6 +28,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import cloudmore.cw.conf.AuthConf;
 import cloudmore.cw.conf.ConfLoader;
+import cloudmore.cw.conf.JwtConf;
 import cloudmore.cw.dto.AuthorizeReqDTO;
 import cloudmore.cw.dto.AuthorizeResDTO;
 import cloudmore.cw.dto.StatusProfileDTO;
@@ -42,6 +43,9 @@ public class AuthController{
 	@Autowired
 	public AuthConf conf;
 
+	private JwtHelper jwtHelper = ConfLoader.getJwtHelper();
+	
+	private JwtConf jwtConf = ConfLoader.getJwtConf();
 	
 	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
 
@@ -60,7 +64,8 @@ public class AuthController{
 	private DeferredResult<AuthorizeResDTO> subrequestAndIssueToken(AuthorizeReq authReq, String authHdr, AuthDeferredResult<AuthorizeResDTO> deferredResult) throws Exception{
 
 		
-		AuthorizeRes response = new AuthorizeRes(authReq, ConfLoader.getJwtHelper(), ConfLoader.getJwtConf());
+
+		AuthorizeRes response = new AuthorizeRes(authReq, jwtHelper, jwtConf);
 		
 		deferredResult.setResult(response.getDto());
 		
