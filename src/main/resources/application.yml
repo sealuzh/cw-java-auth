@@ -1,0 +1,21 @@
+spring:
+  profiles.active: default
+---
+spring:
+  profiles: default
+auth:
+  timeout: 5000
+  isServiceLimited: true
+  apiUrl: http://api.gridheart.com
+  payUrl: http://pay.gridheart.com
+  audioUrl: http://audio.gridheart.com
+  videoUrl: http://video.gridheart.com
+jwt:
+  type: JWT
+  validMinutes: 10
+  notBefore: -2
+  issuer: java-auth.gridheart.com
+  audience: voip.gridheart.com
+  subject: voip.gridheart.com
+  kid: k1
+  secret: '{"kty":"RSA","n":"yA98NLmstcDsyV9fZQdmP6uup4HYC60JBWJMT-Y0owpsDAswDAcXFNvUaU8JFLpnoHtUCLScrn56hHKtS-pL6k4NgzKdKbNBmgaN-RcxkE7FcXukq1nzONPt8qihoJI4FffjJo_1oKKmCGdgaPx2jVVak9rXvpHL7ePteFdiMO_QVg6yHl5JmPDUzGPWz0rQ6g5ZD2ss9Pa_yl5XEZHGjvMciWPESrgvSTpAIL1ZXf4OpuW93vwGl1p-4GNDLJs_0fcLsHT0Ovn2S-ylpJmRRnjtx6NPKFCLxVF-pH5ibLqKmgojdadEd6EgQezf_Rj2whw46Ddbm5EQIXzON628SQ","e":"AQAB","d":"bWECAHWvdqOnEiYBquPTxGXiFJUKAMA3GWl33Ys4JhfRoPgQ6dKKjQ3vYTAj_-A2PeiPtj7BFynxZC6qjsHnhY_tFVj70ku-Ry7kOlay83oNuxDlpAWG1AASrUQDMh4faetglrnIim3Cpv-WF3BIhNcwsXvJztg5jbO7Jrtn5OaRH_HV3bebGOyA3c29_PSsPPsyK_HLEBNhefHgHXiOESYeqsPKIRDLXxLEbGdcIt8r9MyUUnkT_YhxC0T3_cgd9AjLSM8uUYPS0fG7esy9cVHfHJSFT9njPjhhhHlsjlkYnbobhHdLzhOl5oWfVYDnTPFB6weYTZKklVDL7U-7HQ","p":"5MxAM5aw2sSm90kbAScztFXciQOnFizEMRrTr-MqnxfJOoPkD3yoM9t-ikVtyjY9BQPbgw9DPM4hQSKJzKD5ijEbCWhOqjgIaInGZLW4lferCrDNoagwmH1E9Cxm7rGz3F5zuoMdBYXs3G67OoEXGGWf7EvmKFsgNuJMxGi_tos","q":"39iToX3xbg3IzkkO8zsAQvveFVrvpIo8ZEBVJXXjNcVsvm16lZV2il2QXDf6e-YXrptprJxtcc9AJzAgyUhDlKIeYWTumk_550hURPHSI_e1bYcjDhnE5BzRw4NWdBFoTFhcbBZDvZLDRqkCF7gmNv-4-P6lNjcuhhGwE2ybhvs","dp":"q6M-FnVZPwR_bMr-4yKRexteUbrXwZ7bnyrM2wnDk424e5ktoSCW3jAvAXOMJUIDDJwUNIFio17PO5m5XjT0fmLQMYJ6YN-gDywsFKjuTDJ7sY1o9XjC2-I9tB8LKM1ObGa-0pBBWT9arRK0ifMFbFvwWMenZWbXB9VEWaNrDnk","dq":"rSwzAjOZ7MdTO2u_2iIiELAj3qeMT-H12KUAekuabIYAm828kS6hF2hM_1r7OJEIbzeiaDxYWzy359lO9Ako5zsIf9aC1PTcY7ZMI05lgRfozwRF9WmwLb2x9iyMXJz-8FlHnwMWgvmggvDLQqhfQBtT8aWnEKteHbBfZJeYNrM","qi":"jIeYdiF8OWn67IOFk6PpgRlsqFoyrL9SSTid8OjJlhKyEghlPORdjWIPxf3EQDcmBDLJa1dmEFKaT6WXq1YbOasKnt_bqxsZV3xHWdzflG49Rts6J-LEB2UTs4IAtHY_r-50ZoeY_GOdNWlOJ3_WUX95ky4drYG3NOkC3NgwzVc"}'

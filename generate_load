@@ -1,0 +1,10 @@
+#! /bin/bash
+
+
+while [ 1 ]
+do
+   echo "Posting on $1"
+   curl -H "Authorization: blablaauth" -H "Content-Type: application/json" -X POST -d '{"id":"test","timestamp":1441190263,"scope":null,"grantType":null,"ep":["audio.cloudmore.com","video.cloudmore.com"],"expire":0,"token":null}' $1	
+   sleep 5
+done
+

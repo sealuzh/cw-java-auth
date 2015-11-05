@@ -1,0 +1,4 @@
+#! /bin/bash
+gradle src:delombok
+gradle build
+gradle run

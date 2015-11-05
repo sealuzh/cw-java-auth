@@ -1,0 +1,9 @@
+.classpath
+.gradle
+gradle
+.project
+.settings
+bin
+build
+src/buildgenerated-src
+src/build

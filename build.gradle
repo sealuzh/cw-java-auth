@@ -1,0 +1,78 @@
+project.ext {
+    aspectjVersion = '1.8.4'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+apply plugin: "info.robotbrain.lombok"
+apply plugin: 'docker'
+apply plugin: 'aspectj'
+
+mainClassName = 'cloudmore.cw.auth.Application'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    flatDir {
+       dirs 'libs'
+   }	
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+            url "https://maven.eveoh.nl/content/repositories/releases"
+        }
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
+        classpath "nl.eveoh:gradle-aspectj:1.5"
+        classpath "info.robotbrain.gradle.lombok:lombok-gradle:1.1"
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/buildgenerated-src/delombok/main"]
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/buildgenerated-src/delombok/test"]
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    aspectpath 'cloudwave:cw-feedback-monitoring:0.0.1-SNAPSHOT'
+    compile 'cloudwave:cw-feedback-common:0.0.1-SNAPSHOT'	
+    compile 'cloudwave:cw-feedback-monitoring:0.0.1-SNAPSHOT'
+    compile group: 'uk.com.robust-it', name: 'cloning', version:'1.9.2'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'org.bitbucket.b_c:jose4j:0.4.3'
+//    compile 'org.springframework:spring-web:4.2.2.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile 'org.springframework.boot:spring-boot-starter-web'  
+    compile 'org.apache.httpcomponents:httpasyncclient'
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    baseName = 'java-auth'
+    version =  '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+
