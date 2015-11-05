@@ -28,7 +28,6 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import cloudmore.cw.conf.AuthConf;
 import cloudmore.cw.conf.ConfLoader;
-import cloudmore.cw.conf.JwtConf;
 import cloudmore.cw.dto.AuthorizeReqDTO;
 import cloudmore.cw.dto.AuthorizeResDTO;
 import cloudmore.cw.dto.StatusProfileDTO;
@@ -43,10 +42,7 @@ public class AuthController{
 	@Autowired
 	public AuthConf conf;
 
-	@Autowired
-	public JwtConf jwtConf;
 	
-
 	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
 
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
