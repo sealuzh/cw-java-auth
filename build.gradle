@@ -56,6 +56,7 @@ targetCompatibility = 1.8
 dependencies {
     aspectpath 'cloudwave:cw-feedback-monitoring:0.0.1-SNAPSHOT'
     compile 'cloudwave:cw-feedback-common:0.0.1-SNAPSHOT'	
+    compile 'log4j:log4j:1.2.7'
     compile 'cloudwave:cw-feedback-monitoring:0.0.1-SNAPSHOT'
     compile group: 'uk.com.robust-it', name: 'cloning', version:'1.9.2'
     compile 'org.slf4j:slf4j-api:1.7.12'
