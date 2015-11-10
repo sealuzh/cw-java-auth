@@ -1,0 +1,10 @@
+#! /bin/bash
+
+
+while [ 1 ]
+do
+   echo "Posting on $1"
+   curl $1	
+   sleep 5
+done
+
