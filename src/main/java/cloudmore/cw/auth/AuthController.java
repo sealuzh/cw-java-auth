@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.AsyncRestTemplate;
@@ -29,6 +30,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import cloudmore.cw.conf.AuthConf;
 import cloudmore.cw.conf.ConfLoader;
 import cloudmore.cw.conf.JwtConf;
+import cloudmore.cw.conf.ResponseObject;
 import cloudmore.cw.dto.AuthorizeReqDTO;
 import cloudmore.cw.dto.AuthorizeResDTO;
 import cloudmore.cw.dto.StatusProfileDTO;
@@ -49,13 +51,26 @@ public class AuthController{
 	
 	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
 
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public @ResponseBody ResponseObject processRequest(HttpServletRequest request){
+		
+		ResponseObject response = new ResponseObject();
+		
+		response.setIpAddress(request.getRemoteAddr());
+		
+		response.setTimestamp(System.currentTimeMillis());
+		
+		return response;
+	}
+	
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	@ExceptionHandler(HttpUnauthorizedException.class)
 	public ResponseError handleRequestException(HttpServletRequest request, HttpUnauthorizedException ex){
 		return new ResponseError(ex, HttpStatus.UNAUTHORIZED, request.getRequestURI());
 	}
 
-	@RequestMapping(value="/", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, headers="Authorization")
+	@RequestMapping(value="/auth", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE, headers="Authorization")
 	public DeferredResult<AuthorizeResDTO> authorize(@RequestHeader("Authorization") String authHdr, @RequestBody AuthorizeReqDTO authReq) throws Exception{
 		return subrequestAndIssueToken(new AuthorizeReq(authReq), authHdr, new AuthDeferredResult<AuthorizeResDTO>(conf.getTimeout()));
 	}
