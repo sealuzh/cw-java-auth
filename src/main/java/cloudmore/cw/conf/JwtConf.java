@@ -13,11 +13,10 @@ public class JwtConf{
 	private int validMinutes;
 	private int notBefore; // MinutesInThePast
 	private String kid;
-	private String secret;
+	private String secret;	
 	private String audioEp;
 	private String videoEp;
 
-	@Bean
 	public JwtConf jwtConf(){
 		return this;
 	}

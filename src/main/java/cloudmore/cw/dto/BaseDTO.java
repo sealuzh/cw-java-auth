@@ -1,6 +1,5 @@
 package cloudmore.cw.dto;
 
-import lombok.*;
 import java.time.*;
 import com.fasterxml.jackson.annotation.*;
 

@@ -14,7 +14,6 @@ public class AuthConf{
 	private URI audioUrl;
 	private URI videoUrl;
 
-	@Bean
 	public AuthConf authConf(){
 		return this;
 	}
