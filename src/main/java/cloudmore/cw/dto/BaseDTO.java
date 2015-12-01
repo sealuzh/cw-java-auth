@@ -4,7 +4,6 @@ import lombok.*;
 import java.time.*;
 import com.fasterxml.jackson.annotation.*;
 
-@Data
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class BaseDTO{
 	private String id;
@@ -18,4 +17,22 @@ public class BaseDTO{
 		this();
 		setId(nid);
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+	
+	
 }

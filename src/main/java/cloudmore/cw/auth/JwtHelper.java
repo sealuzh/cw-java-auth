@@ -1,7 +1,6 @@
 package cloudmore.cw.auth;
 
 import java.util.*;
-import lombok.*;
 import org.jose4j.jwk.*;
 import org.jose4j.jws.*;
 import org.jose4j.jwt.*;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import cloudmore.cw.conf.*;
 
-@Data
 @Service
 public class JwtHelper{
 	private final Logger log=LoggerFactory.getLogger(this.getClass());
@@ -46,4 +44,18 @@ public class JwtHelper{
 			}
 		};
 	}
+
+	public JwtConf getJwtConf() {
+		return jwtConf;
+	}
+
+	public void setJwtConf(JwtConf jwtConf) {
+		this.jwtConf = jwtConf;
+	}
+
+	public Logger getLog() {
+		return log;
+	}
+	
+	
 }

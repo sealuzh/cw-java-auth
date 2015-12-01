@@ -2,11 +2,9 @@ package cloudmore.cw.auth;
 
 import java.util.*;
 import org.slf4j.*;
-import lombok.*;
 import cloudmore.cw.conf.*;
 import cloudmore.cw.dto.*;
 
-@Data
 public class AuthorizeReq{
 	private final Logger log=LoggerFactory.getLogger(this.getClass());
 	
@@ -18,6 +16,50 @@ public class AuthorizeReq{
 		setDto(ndto);
 		if(ndto.getEp()==null||getEp().isEmpty()) throw new IllegalArgumentException("Audio and Video endpoins are not set.");
 	}
+
+	
+	
+	public AuthorizeReqDTO getDto() {
+		return dto;
+	}
+
+
+
+	public void setDto(AuthorizeReqDTO dto) {
+		this.dto = dto;
+	}
+
+
+
+	public boolean isServiceLimited() {
+		return isServiceLimited;
+	}
+
+
+
+	public void setServiceLimited(boolean isServiceLimited) {
+		this.isServiceLimited = isServiceLimited;
+	}
+
+
+
+	public AuthConf getConf() {
+		return conf;
+	}
+
+
+
+	public void setConf(AuthConf conf) {
+		this.conf = conf;
+	}
+
+
+
+	public Logger getLog() {
+		return log;
+	}
+
+
 
 	@SuppressWarnings("serial")
 	public List<String> getEp(){
