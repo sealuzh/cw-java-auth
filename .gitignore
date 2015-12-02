@@ -9,3 +9,4 @@ src/buildgenerated-src
 src/build
 .log
 /target/
+log4j-application.log
