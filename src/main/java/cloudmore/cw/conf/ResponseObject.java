@@ -1,21 +1,24 @@
 package cloudmore.cw.conf;
 
+import cloudmore.cw.dto.AuthConfDTO;
+import cloudmore.cw.dto.JwtConfDTO;
+
 public class ResponseObject {
 
-	private JwtConf jwtConf;
+	private JwtConfDTO jwtConfDto;
 	
 	private String ipAddress;
 	
-	private AuthConf authConf;
+	private AuthConfDTO authConfDto;
 	
 	private long timestamp;
 
-	public JwtConf getJwtConf() {
-		return jwtConf;
+	public JwtConfDTO getJwtConf() {
+		return jwtConfDto;
 	}
 
-	public void setJwtConf(JwtConf jwtConf) {
-		this.jwtConf = jwtConf;
+	public void setJwtConf(JwtConfDTO jwtConfDto) {
+		this.jwtConfDto = jwtConfDto;
 	}
 
 	public String getIpAddress() {
@@ -26,12 +29,12 @@ public class ResponseObject {
 		this.ipAddress = ipAddress;
 	}
 
-	public AuthConf getAuthConf() {
-		return authConf;
+	public AuthConfDTO getAuthConf() {
+		return authConfDto;
 	}
 
-	public void setAuthConf(AuthConf authConf) {
-		this.authConf = authConf;
+	public void setAuthConf(AuthConfDTO authConf) {
+		this.authConfDto = authConf;
 	}
 
 	public long getTimestamp() {
@@ -41,4 +44,5 @@ public class ResponseObject {
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
+	
 }

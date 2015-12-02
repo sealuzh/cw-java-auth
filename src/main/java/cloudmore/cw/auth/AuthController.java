@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpEntity;
@@ -29,7 +27,6 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import cloudmore.cw.conf.AuthConf;
 import cloudmore.cw.conf.ConfLoader;
-import cloudmore.cw.conf.JwtConf;
 import cloudmore.cw.conf.ResponseObject;
 import cloudmore.cw.dto.AuthorizeReqDTO;
 import cloudmore.cw.dto.AuthorizeResDTO;
@@ -40,7 +37,6 @@ import cloudmore.cw.err.ResponseError;
 @RestController
 @ComponentScan("cloudmore.cw.conf")
 public class AuthController{
-	private final Logger log=LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	public AuthConf conf;
@@ -102,7 +98,7 @@ public class AuthController{
 			@Override
 			public void onSuccess(ResponseEntity<AuthorizeResDTO> res){
 				if(!conf.isServiceLimited()||authReq.isAudioOnly()) try{
-					deferredResult.setResult(new AuthorizeRes(authReq,ConfLoader.getJwtHelper(),ConfLoader.getJwtConf()).getDto());
+					deferredResult.setResult(new AuthorizeRes(authReq,ConfLoader.getJwtHelper(),ConfLoader.getJwtConfPlain()).getDto());
 				}catch(Exception e){
 					deferredResult.setErrorResult(e);
 				}
@@ -122,7 +118,7 @@ public class AuthController{
 						else{
 							authReq.setServiceLimited(result.getBody().isLimited());
 							try{
-								deferredResult.setResult(new AuthorizeRes(authReq,ConfLoader.getJwtHelper(),ConfLoader.getJwtConf()).getDto());
+								deferredResult.setResult(new AuthorizeRes(authReq,ConfLoader.getJwtHelper(),ConfLoader.getJwtConfPlain()).getDto());
 							}catch(Exception e){
 								deferredResult.setErrorResult(e);
 							}
