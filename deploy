@@ -1,0 +1,6 @@
+#! /bin/bash
+/usr/bin/git --git-dir=/home/ubuntu/cw-java-auth/.git --work-tree=/home/ubuntu/cw-java-auth pull
+/usr/bin/mvn install -f /home/ubuntu/cw-java-auth/pom.xml
+/usr/bin/java -Djava.security.egd=file:/dev/urandom -jar /home/ubuntu/cw-java-auth/target/java-auth-0.0.1-SNAPSHOT.jar
+
+
