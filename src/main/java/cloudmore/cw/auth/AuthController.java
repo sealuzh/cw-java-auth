@@ -45,9 +45,6 @@ public class AuthController{
 	@Autowired
 	public AuthConf conf;
 
-	private JwtHelper jwtHelper = ConfLoader.getJwtHelper();
-	
-	private JwtConf jwtConf = ConfLoader.getJwtConf();
 	
 	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
 
