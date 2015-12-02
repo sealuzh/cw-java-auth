@@ -1,0 +1,2 @@
+kill $(ps -eo pid,command | grep "cw-java-auth" | grep -v grep | awk '{print $1}')
+
