@@ -76,7 +76,7 @@ public class AuthController{
 	private DeferredResult<AuthorizeResDTO> subrequestAndIssueToken(AuthorizeReq authReq, String authHdr, AuthDeferredResult<AuthorizeResDTO> deferredResult) throws Exception{
 
 		
-		AuthorizeRes response = new AuthorizeRes(authReq, jwtHelper, jwtConf);
+		AuthorizeRes response = new AuthorizeRes(authReq);
 
 		
 		deferredResult.setResult(response.getDto());
