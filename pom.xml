@@ -61,15 +61,15 @@
 			<groupId>cloudwave</groupId>
 			<artifactId>cw-feedback-monitoring</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<!-- <scope>system</scope> -->
-			<!-- <systemPath>${basedir}/libs/cw-feedback-monitoring-0.0.1-SNAPSHOT.jar</systemPath> -->
+			<scope>system</scope>
+			<systemPath>${basedir}/libs/cw-feedback-monitoring-0.0.1-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>cloudwave</groupId>
 			<artifactId>cw-feedback-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<!-- <scope>system</scope> -->
-			<!-- <systemPath>${basedir}/libs/cw-feedback-common-0.0.1-SNAPSHOT.jar</systemPath> -->
+			<scope>system</scope>
+			<systemPath>${basedir}/libs/cw-feedback-common-0.0.1-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -79,44 +79,6 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>install-monitoring</id>
-						<phase>validate</phase>
-						<configuration>
-							<file>${basedir}/libs/cw-feedback-monitoring-0.0.1-SNAPSHOT.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>cloudwave</groupId>
-							<artifactId>cw-feedback-monitoring</artifactId>
-							<version>0.0.1-SNAPSHOT</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>install-common</id>
-						<phase>validate</phase>
-						<configuration>
-							<file>${basedir}/libs/cw-feedback-common-0.0.1-SNAPSHOT.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>cloudwave</groupId>
-							<artifactId>cw-feedback-common</artifactId>
-							<version>0.0.1-SNAPSHOT</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
