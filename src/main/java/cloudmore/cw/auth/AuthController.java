@@ -54,9 +54,6 @@ public class AuthController{
 		
 		response.setTimestamp(System.currentTimeMillis());
 		
-		response.setAuthConf(ConfLoader.getAuthConf());
-		response.setJwtConf(ConfLoader.getJwtConf());
-		
 		return response;
 	}
 	
