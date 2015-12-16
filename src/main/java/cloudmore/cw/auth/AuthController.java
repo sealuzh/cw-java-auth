@@ -53,9 +53,6 @@ public class AuthController{
 		response.setIpAddress(request.getRemoteAddr());
 		
 		response.setTimestamp(System.currentTimeMillis());
-	
-		response.setAuthConf(ConfLoader.getAuthConf());
-		response.setJwtConf(ConfLoader.getJwtConf());
 		
 		return response;
 	}
