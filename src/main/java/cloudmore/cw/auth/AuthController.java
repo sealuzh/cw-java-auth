@@ -47,10 +47,7 @@ public class AuthController{
 	public AuthConf conf;
 
 	
-	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
-
-	private JwtConfDTO jwtConf = ConfLoader.getJwtConf();
-	private AuthConfDTO authConf = ConfLoader.getAuthConf();
+	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());	
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public @ResponseBody ResponseObject processRequest(HttpServletRequest request){
@@ -61,11 +58,15 @@ public class AuthController{
 		
 		response.setTimestamp(System.currentTimeMillis()); 
 		
-		response.setAuthConf(this.authConf); 
-		response.setJwtConf(this.jwtConf);
+
 		
 		return response; 
 	}
+	
+	//private JwtConfDTO jwtConf = ConfLoader.getJwtConf();
+	//private AuthConfDTO authConf = ConfLoader.getAuthConf();
+	//response.setAuthConf(this.authConf); 
+	//response.setJwtConf(this.jwtConf);	
 	
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	@ExceptionHandler(HttpUnauthorizedException.class)
