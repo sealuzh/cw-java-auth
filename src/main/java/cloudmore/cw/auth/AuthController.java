@@ -58,8 +58,6 @@ public class AuthController{
 		
 		response.setTimestamp(System.currentTimeMillis()); 
 		
-
-		
 		return response; 
 	}
 	
