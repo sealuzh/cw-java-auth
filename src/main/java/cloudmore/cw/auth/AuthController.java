@@ -1,6 +1,8 @@
 package cloudmore.cw.auth;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,9 +29,12 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import cloudmore.cw.conf.AuthConf;
 import cloudmore.cw.conf.ConfLoader;
+import cloudmore.cw.conf.JwtConf;
 import cloudmore.cw.conf.ResponseObject;
+import cloudmore.cw.dto.AuthConfDTO;
 import cloudmore.cw.dto.AuthorizeReqDTO;
 import cloudmore.cw.dto.AuthorizeResDTO;
+import cloudmore.cw.dto.JwtConfDTO;
 import cloudmore.cw.dto.StatusProfileDTO;
 import cloudmore.cw.err.HttpUnauthorizedException;
 import cloudmore.cw.err.ResponseError;
@@ -44,17 +49,22 @@ public class AuthController{
 	
 	private final AsyncRestTemplate asyncClient=new AsyncRestTemplate(new HttpComponentsAsyncClientHttpRequestFactory());
 
+	private JwtConfDTO jwtConf = ConfLoader.getJwtConf();
+	private AuthConfDTO authConf = ConfLoader.getAuthConf();
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public @ResponseBody ResponseObject processRequest(HttpServletRequest request){
-		
+ 
 		ResponseObject response = new ResponseObject();
 		
 		response.setIpAddress(request.getRemoteAddr());
 		
-		response.setTimestamp(System.currentTimeMillis());
+		response.setTimestamp(System.currentTimeMillis()); 
 		
-		return response;
+		response.setAuthConf(this.authConf); 
+		response.setJwtConf(this.jwtConf);
+		
+		return response; 
 	}
 	
 	@ResponseStatus(HttpStatus.UNAUTHORIZED)
